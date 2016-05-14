@@ -1,1 +1,20 @@
 node_modules/
+
+# Wordpress Ignored Root Files and Folders
+wp-admin/
+wp-includes/
+wp-content/themes/twentyfifteen/
+wp-content/themes/twentyfourteen/
+wp-content/themes/twentysixteen/
+wp-activate.php
+wp-blog-header.php
+wp-comments-post.php
+wp-config.php
+wp-cron.php
+wp-links-opml.php
+wp-trackback.php
+wp-settings.php
+wp-mail.php
+wp-login.php
+wp-load.php
+wp-signup.php
