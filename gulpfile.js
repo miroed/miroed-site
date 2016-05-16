@@ -1,5 +1,23 @@
-var gulp = require('gulp');
+var gulp = require('gulp'),
+	sass = require('gulp-sass');
+	cssnano = require('cssnano');
+	postcss = require('gulp-postcss'),
+	uglify = require('gulp-uglify'),
+	autoprefixer = require('autoprefixer'),
+	changed = require('gulp-changed'),
+	watch = require('gulp-watch'),
+	express = require('gulp-express'),
+	theme = 'wp-content/themes/miroed-theme/';
 
-gulp.task('default', function() {
-  // place code for your default task here
+
+gulp.task('css', function() {
+	var processors = [
+        autoprefixer,
+        cssnano
+    ];
+
+    return gulp.src( theme + 'styles/sass/main.scss' )
+        .pipe(sass().on('error', sass.logError))
+        .pipe(postcss(processors))
+        .pipe(gulp.dest( theme + 'styles/' ));
 });

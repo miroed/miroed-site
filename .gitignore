@@ -1,4 +1,5 @@
 node_modules/
+bower_components/
 
 # Wordpress Ignored Root Files and Folders
 wp-admin/
