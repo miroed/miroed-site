@@ -1,0 +1,77 @@
+// Base Styles
+
+// General Styles
+
+html, body {
+	position: relative;
+	font: {
+		size: 62.5%;
+		family: $font-roboto;
+	}
+	color: $dark-gray;
+	height: 100%;
+}
+
+body:before {
+	content: '';
+	position: fixed;
+	border-left: 1rem solid $dark-gray;
+	height: 100vw;
+}
+
+a {
+	color: $sea-green;
+	text-decoration: none;
+
+	&:hover {
+		color: darken($sea-green, 10%);
+		text-decoration: none;
+	}
+}
+
+h1 {
+	font: {
+		size: 3.6rem;
+		family: $font-sansita;
+	}
+}
+
+h2 {
+	font: {
+		size: 2.4rem;
+		weight: bold;
+	}
+	text-transform: uppercase;
+}
+
+h3 {
+	font: {
+		size: 1.8rem;
+		weight: bold;
+	}
+	text-transform: uppercase;
+}
+
+h4 {
+	color: lighten($dark-gray, 10%);
+	font: {
+		size: 1.6rem;
+		weight: bold;
+	}
+}
+
+p {
+	font-size: 1.4rem;
+}
+
+
+// Other Base
+
+.container {
+	width: 68rem;
+}
+
+.icon-mre-logo {
+	color: $white;
+	font-size: 4rem;
+}

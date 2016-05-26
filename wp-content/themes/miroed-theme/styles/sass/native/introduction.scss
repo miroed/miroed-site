@@ -1,0 +1,20 @@
+.introduction {
+	position: relative;
+	color: $white;
+	background-color: $blue;
+	text-align: center;
+	height: 100vh;
+
+	&__lead {
+		font: {
+			size: 4rem;
+			family: $font-sansita;
+		}
+
+		small {
+			display: block;
+			color: lighten($sea-green, 20%);
+			font-size: 2.25rem;
+		}
+	}
+}

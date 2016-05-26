@@ -1,3 +1,20 @@
 // Main Sass File
 
+
+// Vendor Styles
 @import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "https://fonts.googleapis.com/css?family=Sansita+One|Roboto:400,700,300,900";
+
+// Global Styles
+@import "global/variables.scss";
+@import "global/fonts.scss";
+@import "global/base.scss"; 
+
+
+// Native Styles
+@import "native/introduction.scss";
+@import "native/navigation.scss";
+@import "native/work.scss";
+@import "native/skills.scss";
+@import "native/contact.scss";
+

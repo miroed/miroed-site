@@ -1,5 +1,6 @@
 node_modules/
 bower_components/
+assets/
 
 # Wordpress Ignored Root Files and Folders
 wp-admin/
@@ -19,3 +20,5 @@ wp-mail.php
 wp-login.php
 wp-load.php
 wp-signup.php
+
+

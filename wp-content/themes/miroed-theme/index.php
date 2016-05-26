@@ -12,14 +12,16 @@
 	<body>
 
 	<header class="navigation">
-		
+		<a href="/" title="Michael Edmond | UI Designer | Front-end Developer"><span class="icon-mre-logo"></span></a>
 	</header> <!-- End of Navigation Section -->
 
 	<section class="introduction">
 		<div class="container">
 			<div class="row">
-				<p class="introduction__lead">What's Up? I'm Michael, your friendly neighborhood web guy.</p>
-				<p>I design and code for humans, like you. Let's build.</p>
+				<p class="introduction__lead">Hey, I'm Michael, your friendly neighborhood web guy.
+					<small>I design and code for humans, like you. Let's build.</small>
+				</p>
+				
 			</div> <!-- End Row -->
 		</div> <!-- End of the Container -->
 	</section> <!-- End of Introduction Section -->
@@ -39,67 +41,9 @@
 		</div> <!-- End of Work Showcase -->
 	</section> <!-- End of Pieces of Work -->
 
-	<section class="skills">
-		<div class="skills__groups">
-			<ul>
-				<li>
-					<h3>Design <small>(Making the functional, useful.)</small></h3>
-					<ul>
-						<li>
-							<h4>Use cases and scenarios</h4>
-							<ul class="skills__elements">
-								<li class="skills--design">Pencil &amp; Paper</li>
-								<li class="skills--design">Whiteboard</li>
-							</ul>
-						</li>
-						<li>
-							<h4>Sketches</h4>
-							<ul class="skills__elements">
-								<li class="skills--design">Pencil &amp; Paper</li>
-								<li class="skills--design">Whiteboard</li>
-								<li class="skills--design">Illustrator</li>
-							</ul>
-						</li>
-						<li>
-							<h4>Wireframing</h4>
-							<ul class="skills__elements">
-								<li class="skills--design">Photoshop</li>
-								<li class="skills--design">Axure</li>
-								<li class="skills--design">Illustrator</li>
-								<li class="skills--design">Pencil &amp; Paper</li>
-								<li class="skills--design">Whiteboard</li>
-							</ul>
-						</li>
-						<li>
-							<h4>High-Fedility Mockups</h4>
-							<ul class="skills__elements">
-								<li class="skills--design">Photoshop</li>
-								<li class="skills--design">Illustrator</li>
-							</ul>
-						</li>
-						<li>
-							<h4>Prototyping</h4>
-							<ul class="skills__elements">
-								<li class="skills--design">Axure</li>
-								<li class="skills--design">InVision</li>
-								<li class="skills--design">Javascript</li>
-								<li class="skills--design">HTML &amp; CSS</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<h3>Develop <small>(Making it do, what it do.)</small></h3>
-					<ul>
-						<li><h4>UI Architecture</h4></li>
-						<li><h4>Responsive Implementations</h4></li>
-						<li><h4>Javascript Development</h4></li>
-						<li><h4>Wordpress Theme Development</h4></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</section> <!-- End of Skills Section -->
+	<section class="blog">
+		
+	</section> <!-- End of Blog Section -->
 
 	<section class="contact">
 		

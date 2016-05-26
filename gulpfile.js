@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 	theme = 'wp-content/themes/miroed-theme/';
 
 
-gulp.task('css', function() {
+gulp.task('css', function () {
 	var processors = [
         autoprefixer,
         cssnano
@@ -20,4 +20,15 @@ gulp.task('css', function() {
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss(processors))
         .pipe(gulp.dest( theme + 'styles/' ));
+});
+
+// gulp.task('js', function () {
+
+	// return gulp.src( theme + 'js/native/**/*.js')
+		// .pipe(uglify);
+
+// });
+
+gulp.task('default',function() {
+    gulp.watch(theme + 'styles/sass/**/*.scss',['css']);
 });
