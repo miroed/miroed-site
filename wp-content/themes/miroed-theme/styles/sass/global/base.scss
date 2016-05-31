@@ -12,11 +12,16 @@ html, body {
 	height: 100%;
 }
 
-body:before {
-	content: '';
-	position: fixed;
-	border-left: 1rem solid $dark-gray;
-	height: 100vw;
+.border {
+
+	&--left {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 2.5rem;
+		background: $blue;
+	}
 }
 
 a {
@@ -32,22 +37,24 @@ a {
 h1 {
 	font: {
 		size: 3.6rem;
-		family: $font-sansita;
+		family: $font-lemon;
 	}
 }
 
 h2 {
 	font: {
-		size: 2.4rem;
+		size: 2.8rem;
 		weight: bold;
+		family: $font-lemon;
 	}
 	text-transform: uppercase;
 }
 
 h3 {
 	font: {
-		size: 1.8rem;
+		size: 2rem;
 		weight: bold;
+		family: $font-lemon;
 	}
 	text-transform: uppercase;
 }
@@ -55,13 +62,18 @@ h3 {
 h4 {
 	color: lighten($dark-gray, 10%);
 	font: {
-		size: 1.6rem;
+		size: 1.8rem;
 		weight: bold;
 	}
 }
 
 p {
 	font-size: 1.4rem;
+}
+
+section {
+	height: 100vh;
+	margin: 0 4rem; 
 }
 
 

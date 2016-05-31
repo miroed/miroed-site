@@ -10,16 +10,17 @@
         <?php wp_head(); ?>
     </head>
 	<body>
+	<div class="border--left"></div>
 
 	<header class="navigation">
-		<a href="/" title="Michael Edmond | UI Designer | Front-end Developer"><span class="icon-mre-logo"></span></a>
+		<!-- <a href="/" title="Michael Edmond | UI Designer | Front-end Developer"><span class="icon-mre-logo"></span></a> -->
 	</header> <!-- End of Navigation Section -->
 
 	<section class="introduction">
 		<div class="container">
 			<div class="row">
 				<p class="introduction__lead">Hey, I'm Michael, your friendly neighborhood web guy.
-					<small>I design and code for humans, like you. Let's build.</small>
+					<small>I design and code for humans, like you. <span class="introduction--emphasis">Let's build.</span></small>
 				</p>
 				
 			</div> <!-- End Row -->
@@ -37,8 +38,18 @@
 		</div> <!-- End of Work Meta Information -->
 
 		<div class="work__showcase">
-			
+			<ul>
+				<li><a href="#">Gym App (Concept)</a></li>
+				<li><a href="#">America's Electric Cooperatives</a></li>
+				<li><a href="#">Shopping App (Concept)</a></li>
+			</ul>
 		</div> <!-- End of Work Showcase -->
+
+		<div class="work__showcase__details">
+			<article class="work__details work__details--gym-app">
+				
+			</article>
+		</div>
 	</section> <!-- End of Pieces of Work -->
 
 	<section class="blog">

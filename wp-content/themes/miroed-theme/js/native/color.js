@@ -1,28 +1,99 @@
-$(document).ready(function(){ 
+jQuery(document).ready(function($){ 
+
+    'use strict'; 
+
     //** notice we are including jquery and the color plugin at 
     //** http://code.jquery.com/color/jquery.color-2.1.0.js
     
-    var scroll_pos = 0;
-    var animation_begin_pos = 0; //where you want the animation to begin
-    var animation_end_pos = 1000; //where you want the animation to stop
-    var beginning_color = new $.Color( 'rgb(210,50,98)' ); //we can set this here, but it'd probably be better to get it from the CSS; for the example we're setting it here.
-    var ending_color = new $.Color( 'rgb(0,197,209)' ); ;//what color we want to use in the end
-    $(document).scroll(function() {
-        scroll_pos = $(this).scrollTop(); 
-        if(scroll_pos >= animation_begin_pos && scroll_pos <= animation_end_pos ) { 
-           // console.log( 'scrolling and animating' );
-            //we want to calculate the relevant transitional rgb value
-            var percentScrolled = scroll_pos / ( animation_end_pos - animation_begin_pos );
-            var newRed = beginning_color.red() + ( ( ending_color.red() - beginning_color.red() ) * percentScrolled );
-            var newGreen = beginning_color.green() + ( ( ending_color.green() - beginning_color.green() ) * percentScrolled );
-            var newBlue = beginning_color.blue() + ( ( ending_color.blue() - beginning_color.blue() ) * percentScrolled );
-            var newColor = new $.Color( newRed, newGreen, newBlue );
-            //console.log( newColor.red(), newColor.green(), newColor.blue() );
-            $('body').animate({ backgroundColor: newColor }, 0);
-        } else if ( scroll_pos > animation_end_pos ) {
-             $('body').animate({ backgroundColor: ending_color }, 0);
-        } else if ( scroll_pos < animation_begin_pos ) {
-             $('body').animate({ backgroundColor: beginning_color }, 0);
-        } else { }
-    });
+    var scroll_pos = 0, 
+
+        // Site Sections 
+        sections = { 
+            'introduction': {
+                'top': $('.introduction').position().top,
+                'bottom' : $('.introduction').position().bottom,
+                'color' : '#0076A3', // blue
+            },
+            'work': {
+                'top': $('.work').position().top,
+                'bottom' : $('.work').position().bottom,
+                'color' : '#70C1B3', // Sea-Green
+            },
+            'blog': {
+                'top': $('.blog').position().top,
+                'bottom' : $('.blog').position().bottom,
+                'color' : '#FFE066', // Yellow
+            },
+            'contact': {
+                'top': $('.contact').position().top,
+                'bottom' : $('.contact').position().bottom,
+                'color' : '#F25F5C', // Red
+            }
+        },
+        animation_begin_pos = sections.introduction.top, //where you want the animation to begin
+        animation_end_pos = sections.contact.top, //where you want the animation to stop
+        scrolled_colors = function ( beginning_color, ending_color ) {
+
+            // we want to calculate the relevant transitional rgb value
+            var percentScrolled = scroll_pos / ( animation_end_pos - animation_begin_pos ),
+                start_color = new $.Color( beginning_color ),
+                end_color = new $.Color( ending_color ),
+                newRed = start_color.red() + ( ( end_color.red() - start_color.red() ) * percentScrolled ),
+                newGreen = start_color.green() + ( ( end_color.green() - start_color.green() ) * percentScrolled ),
+                newBlue = start_color.blue() + ( ( end_color.blue() - start_color.blue() ) * percentScrolled ),
+                newColor = new $.Color( newRed, newGreen, newBlue );
+
+                return newColor;
+        };
+
+
+    $(document)
+        .scroll(function() {
+
+            scroll_pos = $(this).scrollTop();
+
+            if ( scroll_pos === sections.contact.top ) {
+
+                // console.log('at contact');
+
+                $('.border--left')
+                    .animate(
+                        {
+                            backgroundColor: sections.contact.colors 
+                        }, 0);
+
+            } else if ( scroll_pos > sections.blog.top ) {
+
+                // console.log('at blog');
+
+                $('.border--left')
+                    .animate(
+                        {
+                            backgroundColor: scrolled_colors(sections.blog.color, sections.contact.color) 
+                        }, 0);
+
+            } else if ( scroll_pos > sections.work.top ) {
+
+                // console.log('at work');
+
+                $('.border--left')
+                    .animate(
+                        {
+                            backgroundColor: scrolled_colors(sections.work.color, sections.blog.color) 
+                        }, 0);
+
+            } else if ( scroll_pos > sections.introduction.top ) {
+                
+                // console.log('at intro'); 
+
+                $('.border--left')
+                    .animate(
+                        { 
+                            backgroundColor: scrolled_colors(sections.introduction.color, sections.work.color) 
+                        }, 0);
+
+            }   else {
+                // False
+            }
+        });
 });

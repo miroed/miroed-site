@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 	cssnano = require('cssnano');
 	postcss = require('gulp-postcss'),
 	uglify = require('gulp-uglify'),
+	concat = require('gulp-concat'),
 	autoprefixer = require('autoprefixer'),
 	changed = require('gulp-changed'),
 	watch = require('gulp-watch'),
@@ -22,13 +23,16 @@ gulp.task('css', function () {
         .pipe(gulp.dest( theme + 'styles/' ));
 });
 
-// gulp.task('js', function () {
+gulp.task('js', function () {
 
-	// return gulp.src( theme + 'js/native/**/*.js')
-		// .pipe(uglify);
+	return gulp.src([theme + 'js/vendor/jquery.color-2.1.0.js', theme + 'js/native/color.js'])
+		.pipe(concat( 'main.min.js' ))
+		.pipe(uglify())
+		.pipe(gulp.dest( theme + 'js/' ));
 
-// });
+});
 
 gulp.task('default',function() {
     gulp.watch(theme + 'styles/sass/**/*.scss',['css']);
+    gulp.watch(theme + 'js/**/*.js',['js']);
 });

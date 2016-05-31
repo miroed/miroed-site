@@ -1,20 +1,25 @@
 .introduction {
 	position: relative;
-	color: $white;
-	background-color: $blue;
+	color: $blue;
 	text-align: center;
-	height: 100vh;
+	display: flex;
+	align-items: center;
 
 	&__lead {
 		font: {
-			size: 4rem;
-			family: $font-sansita;
-		}
-
+			size: 3.5rem;
+			family: $font-lemon;
+		} 
 		small {
 			display: block;
-			color: lighten($sea-green, 20%);
+			color: $dark-gray;
+			font-family: $font-roboto;
 			font-size: 2.25rem;
 		}
+	}
+
+	&--emphasis {
+		color: $red;
+		font-weight: bold;
 	}
 }
