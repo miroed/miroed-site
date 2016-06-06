@@ -1,14 +1,21 @@
 var gulp = require('gulp'),
-	sass = require('gulp-sass');
-	cssnano = require('cssnano');
+	util = require('gulp-util'),
+	sass = require('gulp-sass'),
+	cssnano = require('cssnano'),
 	postcss = require('gulp-postcss'),
+	sourcemaps = require('gulp-sourcemaps'),
 	uglify = require('gulp-uglify'),
 	concat = require('gulp-concat'),
 	autoprefixer = require('autoprefixer'),
 	changed = require('gulp-changed'),
 	watch = require('gulp-watch'),
-	express = require('gulp-express'),
-	theme = 'wp-content/themes/miroed-theme/';
+	webpack = require('webpack'),
+	stream = require('webpack-stream'),
+	theme = 'wp-content/themes/miroed-theme/',
+	dist = {
+		js : theme + 'dist/js',
+		styles : theme + 'dist/styles',
+	};
 
 
 gulp.task('css', function () {
@@ -18,18 +25,18 @@ gulp.task('css', function () {
     ];
 
     return gulp.src( theme + 'styles/sass/main.scss' )
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass().on('error', util.log))
         .pipe(postcss(processors))
-        .pipe(gulp.dest( theme + 'styles/' ));
+        .pipe(gulp.dest( dist.styles ));
 });
 
 gulp.task('js', function () {
-
-	return gulp.src([theme + 'js/vendor/jquery.color-2.1.0.js', theme + 'js/native/color.js'])
-		.pipe(concat( 'main.min.js' ))
-		.pipe(uglify())
-		.pipe(gulp.dest( theme + 'js/' ));
-
+	return gulp.src(theme + 'js/main.js')
+		.pipe(stream({
+			devtool: 'source-map',
+		})
+			.on('error', util.log))
+		.pipe(gulp.dest(dist.js));
 });
 
 gulp.task('default',function() {
