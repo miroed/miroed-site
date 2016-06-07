@@ -61,6 +61,5 @@
 	</section> <!-- End of Contact Section -->
 		
 	<?php wp_footer(); ?>
-	<!-- js -->
 	</body>
 </html>

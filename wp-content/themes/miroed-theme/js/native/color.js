@@ -1,6 +1,6 @@
-var $ = require('../vendor/jquery-2.2.4.min.js');
+jQuery(document).ready(function($){ 
 
-'use strict';   
+    'use strict'; 
 
     //** notice we are including jquery and the color plugin at 
     //** http://code.jquery.com/color/jquery.color-2.1.0.js
@@ -11,23 +11,23 @@ var $ = require('../vendor/jquery-2.2.4.min.js');
         // Site Sections 
         sections = { 
             'introduction': {
-                'top': $('.introduction').position.top,
-                'bottom' : $('.introduction').position.bottom,
+                'top': $('.introduction').position().top,
+                'bottom' : $('.introduction').position().bottom,
                 'color' : '#0076A3', // blue
             },
             'work': {
-                'top': $('.work').position.top,
-                'bottom' : $('.work').position.bottom,
+                'top': $('.work').position().top,
+                'bottom' : $('.work').position().bottom,
                 'color' : '#70C1B3', // Sea-Green
             },
             'blog': {
-                'top': $('.blog').position.top,
-                'bottom' : $('.blog').position.bottom,
+                'top': $('.blog').position().top,
+                'bottom' : $('.blog').position().bottom,
                 'color' : '#FFE066', // Yellow
             },
             'contact': {
-                'top': $('.contact').position.top,
-                'bottom' : $('.contact').position.bottom,
+                'top': $('.contact').position().top,
+                'bottom' : $('.contact').position().bottom,
                 'color' : '#F25F5C', // Red
             }
         },
@@ -43,12 +43,12 @@ var $ = require('../vendor/jquery-2.2.4.min.js');
 
             // we want to calculate the relevant transitional rgb value
             var percentScrolled = scroll_pos / ( animation_end_pos - animation_begin_pos ),
-                start_color = color( beginning_color ),
-                end_color = color( ending_color ),
+                start_color = new $.Color( beginning_color ),
+                end_color = new $.Color( ending_color ),
                 newRed = start_color.red() + ( ( end_color.red() - start_color.red() ) * percentScrolled ),
                 newGreen = start_color.green() + ( ( end_color.green() - start_color.green() ) * percentScrolled ),
                 newBlue = start_color.blue() + ( ( end_color.blue() - start_color.blue() ) * percentScrolled ),
-                newColor = color( newRed, newGreen, newBlue );
+                newColor = new $.Color( newRed, newGreen, newBlue );
 
                 return newColor;
         };
@@ -79,16 +79,6 @@ var $ = require('../vendor/jquery-2.2.4.min.js');
                             backgroundColor: miroed.scrolled_colors(sections.blog.color, sections.contact.color) 
                         }, 0);
 
-            } else if ( scroll_pos > sections.work.top ) {
-
-                // console.log('at work');
-
-                $('.border--left')
-                    .animate(
-                        {
-                            backgroundColor: miroed.scrolled_colors(sections.work.color, sections.blog.color) 
-                        }, 0);
-
             } else if ( scroll_pos >= sections.introduction.top && scroll_pos <= sections.introduction.bottom ) {
                 
                 // console.log('at intro'); 
@@ -99,7 +89,18 @@ var $ = require('../vendor/jquery-2.2.4.min.js');
                             backgroundColor: miroed.scrolled_colors(sections.introduction.color, sections.work.color) 
                         }, 0); 
 
-            }   else {
+            } else if ( scroll_pos > sections.work.top ) {
+
+                // console.log('at work');
+
+                $('.border--left')
+                    .animate(
+                        {
+                            backgroundColor: miroed.scrolled_colors(sections.work.color, sections.blog.color) 
+                        }, 0);
+
+            } else {
                 // false
             }
         });
+});
